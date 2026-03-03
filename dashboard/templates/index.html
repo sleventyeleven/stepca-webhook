@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCEP Challenge Webhook Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SCEP Challenge Webhook Dashboard</h1>
+            <p>Manage your SCEP devices and challenges</p>
+        </header>
+
+        <div class="content">
+            <section class="device-management">
+                <h2>Register New Device</h2>
+                <form id="register-form" class="register-form">
+                    <div class="form-group">
+                        <label for="serial_number">Serial Number</label>
+                        <input type="text" id="serial_number" name="serial_number" maxlength="16" required
+                            placeholder="1234567890123456">
+                        <small>16 characters (typically device serial)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hostname">Hostname</label>
+                        <input type="text" id="hostname" name="hostname" required
+                            placeholder="device.local">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passphrase">Diceware Passphrase</label>
+                        <input type="text" id="passphrase" name="passphrase" required
+                            placeholder="Queen-Ate-Lamp-Wise-Smell">
+                        <small>Use: https://codeland.co.uk/tools/diceware/</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Register Device</button>
+                </form>
+            </section>
+
+            <section class="device-list">
+                <h2>Registered Devices</h2>
+                <div id="devices-container" class="devices-container">
+                    <p class="loading">Loading devices...</p>
+                </div>
+            </section>
+
+            <section class="passphrase-rotation">
+                <h2>Passphrase Rotation</h2>
+                <form id="rotate-form" class="rotate-form">
+                    <div class="form-group">
+                        <label for="rotate-serial">Device Serial Number</label>
+                        <input type="text" id="rotate-serial" name="serial" maxlength="16" required
+                            placeholder="1234567890123456">
+                    </div>
+
+                    <button type="submit" class="btn btn-warning">Rotate Passphrase</button>
+                </form>
+            </section>
+        </div>
+
+        <footer>
+            <p>SCEP Challenge Webhook Dashboard</p>
+        </footer>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
